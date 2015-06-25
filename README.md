@@ -11,7 +11,9 @@ All images should be inside the img folder.
 
 ## Atributions:
 Font Awesome by Dave Gandy - http://fontawesome.io
+
 Normalize CSS by Nicolas Gallagher and Jonathan Neal - http://necolas.github.io/normalize.css/
+
 Animate CSS by Daniel Eden - http://daneden.github.io/animate.css/
 
 ## Documentation 
