@@ -16,5 +16,9 @@ Normalize CSS by Nicolas Gallagher and Jonathan Neal - http://necolas.github.io/
 
 Animate CSS by Daniel Eden - http://daneden.github.io/animate.css/
 
+Lazy Loading by Mika Tuupola - http://www.appelsiini.net/projects/lazyload
+
+Fit Vids by  Chris Coyier and Paravel - http://fitvidsjs.com/
+
 ## Documentation 
 You can see the documentation in http://www.aegisframework.com/documentation.html
