@@ -1,24 +1,48 @@
-/**
-* Space for all imported Fonts
-*/
+/** Space for all imported Fonts **/
 
 
-/**
-* Main Style goes here
-*/
 
- /**
-* Place here all Media Queries and it's styles.
-*/
+/** Main Style goes here**/
 
- /* 400px (Most Smartphones, and minimun width of browser in a computer) */
- @media (max-width: 25rem) {
- 	body{
 
- 	}
+/** Place here all Media Queries and it's styles.**/
+
+ /** 720px Small Smartphones **/
+ @media (min-width: 45em) {
+
  }
 
- /* CSS for Printing */
+/** Medium screens (1080px)**/
+ @media (min-width: 67.5em) {
+
+ }
+
+/** HD Screen (1280px) **/
+ @media screen and (min-width: 80em) {
+
+ }
+
+/** Full HD Screen (1920px) **/
+ @media screen and (min-width: 120em) {
+
+ }
+
+ /** Retina Screen (2560px) **/
+ @media screen and (min-width: 160em) {
+
+ }
+
+/** 4k Screens (3840px) **/
+ @media screen and (min-width: 240em) {
+
+ }
+
+/** 5k Screens (5120px) **/
+ @media screen and (min-width: 320em) {
+
+ }
+
+/** CSS for Printing **/
  @media print {
 
  }
