@@ -1,13 +1,20 @@
 # AegisTemplate
-Create your webpage quickly with this template, featuring the cutting edge technologies and features of HTML5, CSS3 and Javascript. Make it mobile and social friendly!
+Aegis Template is the simple base for the Aegis Framework, it will allow you to create your webpage quickly, featuring the cutting edge technologies and features of HTML5, CSS3 and Javascript.
 
-Web: http://www.aegisframework.com/
+It also features many properties to make your website it mobile and social friendly!
 
-## Use:
-Fill the HTML Template, comments mention the information needed.
-Your CSS goes under the main.css File
-Your JS goes under the main.js File
-All images should be inside the img folder.
+Visit the Web: http://www.aegisframework.com/
+
+## Quick Start:
+
+1. Download the latest release from the [Releases Page](https://github.com/HyuchiaDiego/AegisTemplate/releases).
+2. Unzip the File.
+3. Place your content on the index.html file and create as many files as you need.
+4. Place your custom style on the main.css file.
+5. Place your custom javascript on the main.js file.
+6. Images should be placed inside the img directory.
+
+For more information read the [documentation](http://www.aegisframework.com/documentation.html).
 
 ## Atributions:
 Font Awesome by Dave Gandy - http://fontawesome.io
@@ -20,5 +27,6 @@ Lazy Loading by Mika Tuupola - http://www.appelsiini.net/projects/lazyload
 
 Fit Vids by  Chris Coyier and Paravel - http://fitvidsjs.com/
 
-## Documentation 
-You can see the documentation in http://www.aegisframework.com/documentation.html
+
+## License
+Aegis is an Open Source project released under the [MIT license](https://github.com/HyuchiaDiego/AegisTemplate/blob/master/LICENSE).
