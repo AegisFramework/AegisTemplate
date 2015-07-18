@@ -1,9 +1,9 @@
-# AegisTemplate
-Aegis Template is the simple base for the Aegis Framework, it will allow you to create your webpage quickly, featuring the cutting edge technologies and features of HTML5, CSS3 and Javascript.
+# Aegis Template
+This template is the simple base for the Aegis Framework, it will allow you to create your webpage quickly, featuring the cutting edge technologies and features of HTML5, CSS3 and Javascript.
 
 It also features many properties to make your website it mobile and social friendly!
 
-Visit the Web: http://www.aegisframework.com/
+Visit the [WebPage](http://www.aegisframework.com/) 
 
 ## Quick Start:
 
@@ -17,16 +17,15 @@ Visit the Web: http://www.aegisframework.com/
 For more information read the [documentation](http://www.aegisframework.com/documentation.html).
 
 ## Atributions:
-Font Awesome by Dave Gandy - http://fontawesome.io
+[Font Awesome](http://fontawesome.io) by Dave Gandy
 
-Normalize CSS by Nicolas Gallagher and Jonathan Neal - http://necolas.github.io/normalize.css/
+[Normalize CSS](http://necolas.github.io/normalize.css/) by Nicolas Gallagher and Jonathan Neal
 
-Animate CSS by Daniel Eden - http://daneden.github.io/animate.css/
+[Animate CSS](http://daneden.github.io/animate.css/) by Daniel Eden
 
-Lazy Loading by Mika Tuupola - http://www.appelsiini.net/projects/lazyload
+[Lazy Loading](http://www.appelsiini.net/projects/lazyload) by Mika Tuupola
 
-Fit Vids by  Chris Coyier and Paravel - http://fitvidsjs.com/
-
+[Fit Vids]( http://fitvidsjs.com/) by  Chris Coyier and Paravel
 
 ## License
 Aegis is an Open Source project released under the [MIT license](https://github.com/HyuchiaDiego/AegisTemplate/blob/master/LICENSE).
