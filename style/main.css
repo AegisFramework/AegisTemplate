@@ -7,18 +7,16 @@
 
 /** Place here all Media Queries and it's styles.**/
 
- /** 720px Small Smartphones **/
- @media (min-width: 45em) {
+ /** Default Style. Don't change. (720px) **/
+ @media (min-width: 45em) {}
 
- }
-
-/** Medium screens (1080px)**/
+/** Medium Screens (1080px)**/
  @media (min-width: 67.5em) {
 
  }
 
-/** HD Screen (1280px) **/
- @media screen and (min-width: 80em) {
+/** HD Screen (1200px) **/
+ @media screen and (min-width: 75em) {
 
  }
 
