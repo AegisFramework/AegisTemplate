@@ -1,90 +1,24 @@
 /**
- * ==============================
- * Aegis Framework | MIT License
- * http://www.aegisframework.com/
- * ==============================
- */
-
-/**
- * Space for all imported Fonts
- */
-
-
+* Space for all imported Fonts
+*/
 
 
 /**
- * Main Style goes here
- */
-html {
-	width: auto;
-	overflow-x: hidden;
-}
+* Main Style goes here
+*/
 
-body {
-	height: 100%;
-	width: 100%;
-  	overflow-x: hidden;
-  	font-size: 100%;
-  	margin: 0;
-  	padding: 0;
-}
+ /**
+* Place here all Media Queries and it's styles.
+*/
 
-li {
-	list-style-type: none;
-	display: inline-block;
-}
+ /* 400px (Most Smartphones, and minimun width of browser in a computer) */
+ @media (max-width: 25rem) {
+ 	body{
 
-a {
-	text-decoration: none;
-	color: inherit;
-}
+ 	}
+ }
 
-.wait, .wait * {
-	cursor: wait;
-}
-/**
- * Some CSS Fixes
- */
+ /* CSS for Printing */
+ @media print {
 
-*, *:before, *:after {
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
-}
-
-.container {
-	margin: 0 auto;
-	max-width: 60rem; /*48rem*/
-	width: 95%;
-}
-
-.clearfix:before,
-.clearfix:after {
-	content: " ";
-	display: table;
-}
-
-.clearfix:after {
-	clear: both;
-}
-
-.clearfix {
-	*zoom: 1;
-}
-
-
-/**
- * Place here all Media Queries and it's styles.
- */
-
-/* 400px (Most Smartphones, and minimun width of browser in a computer) */
-@media (max-width: 25rem){
-	body{
-
-	}
-}
-
-/* CSS for Printing */
-@media print{
-
-}
+ }
