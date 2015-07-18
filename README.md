@@ -3,7 +3,7 @@ This template is the simple base for the Aegis Framework, it will allow you to c
 
 It also features many properties to make your website it mobile and social friendly!
 
-Visit the [WebPage](http://www.aegisframework.com/) 
+Visit the [WebPage](http://www.aegisframework.com/)
 
 ## Quick Start:
 
@@ -16,7 +16,7 @@ Visit the [WebPage](http://www.aegisframework.com/)
 
 For more information read the [documentation](http://www.aegisframework.com/documentation.html).
 
-## Atributions:
+## Attributions:
 [Font Awesome](http://fontawesome.io) by Dave Gandy
 
 [Normalize CSS](http://necolas.github.io/normalize.css/) by Nicolas Gallagher and Jonathan Neal
