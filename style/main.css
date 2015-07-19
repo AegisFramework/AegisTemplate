@@ -7,40 +7,50 @@
 
 /** Place here all Media Queries and it's styles.**/
 
- /** Default Style. Don't change. (720px) **/
- @media (min-width: 45em) {}
+/** Default Style. Don't change. (320px) **/
+@media screen and  (max-width: 20em) {}
 
-/** Medium Screens (1080px)**/
- @media (min-width: 67.5em) {
+/** Extra Small Devices, Phones (480px) **/
+@media screen and (min-width : 30em) {
 
- }
+}
 
-/** HD Screen (1200px) **/
- @media screen and (min-width: 75em) {
+/** Small Screens, Tablets (720px) **/
+@media screen and (min-width: 45em) {
 
- }
+}
 
-/** Full HD Screen (1920px) **/
- @media screen and (min-width: 120em) {
+/** Medium Devices, Desktops (992px)**/
+@media screen and (min-width: 62em) {
 
- }
+}
 
- /** Retina Screen (2560px) **/
- @media screen and (min-width: 160em) {
+/** HD Screen, Large Devices, Wide Screens (1200px) **/
+@media screen and (min-width: 75em) {
 
- }
+}
 
-/** 4k Screens (3840px) **/
- @media screen and (min-width: 240em) {
+/** Full HD Screen, Large Devices, Wide Screens (1920px) **/
+@media screen and (min-width: 120em) {
 
- }
+}
 
-/** 5k Screens (5120px) **/
- @media screen and (min-width: 320em) {
+/** Retina Screen , Large Devices, Wide Screens(2560px) **/
+@media screen and (min-width: 160em) {
 
- }
+}
+
+/** 4k Screens, Large Devices, Wide Screens (3840px) **/
+@media screen and (min-width: 240em) {
+
+}
+
+/** 5k Screens, Large Devices, Wide Screens (5120px) **/
+@media screen and (min-width: 320em) {
+
+}
 
 /** CSS for Printing **/
- @media print {
+@media print {
 
- }
+}
