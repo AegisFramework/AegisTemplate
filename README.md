@@ -1,24 +1,31 @@
-# AegisTemplate
-Create your webpage quickly with this template, featuring the cutting edge technologies and features of HTML5, CSS3 and Javascript. Make it mobile and social friendly!
+# Aegis Template
+This template is the simple base for the Aegis Framework, it will allow you to create your webpage quickly, featuring the cutting edge technologies and features of HTML5, CSS3 and Javascript.
 
-Web: http://www.aegisframework.com/
+It also features many properties to make your website it mobile and social friendly!
 
-## Use:
-Fill the HTML Template, comments mention the information needed.
-Your CSS goes under the main.css File
-Your JS goes under the main.js File
-All images should be inside the img folder.
+Visit the [WebPage](http://www.aegisframework.com/)
 
-## Atributions:
-Font Awesome by Dave Gandy - http://fontawesome.io
+## Quick Start:
 
-Normalize CSS by Nicolas Gallagher and Jonathan Neal - http://necolas.github.io/normalize.css/
+1. Download the latest release from the [Releases Page](https://github.com/HyuchiaDiego/AegisTemplate/releases).
+2. Unzip the File.
+3. Place your content on the index.html file and create as many files as you need.
+4. Place your custom style on the main.css file.
+5. Place your custom javascript on the main.js file.
+6. Images should be placed inside the img directory.
 
-Animate CSS by Daniel Eden - http://daneden.github.io/animate.css/
+For more information read the [documentation](http://www.aegisframework.com/documentation.html).
 
-Lazy Loading by Mika Tuupola - http://www.appelsiini.net/projects/lazyload
+## Attributions:
+[Font Awesome](http://fontawesome.io) by Dave Gandy
 
-Fit Vids by  Chris Coyier and Paravel - http://fitvidsjs.com/
+[Normalize CSS](http://necolas.github.io/normalize.css/) by Nicolas Gallagher and Jonathan Neal
 
-## Documentation 
-You can see the documentation in http://www.aegisframework.com/documentation.html
+[Animate CSS](http://daneden.github.io/animate.css/) by Daniel Eden
+
+[Lazy Loading](http://www.appelsiini.net/projects/lazyload) by Mika Tuupola
+
+[Fit Vids]( http://fitvidsjs.com/) by  Chris Coyier and Paravel
+
+## License
+Aegis is an Open Source project released under the [MIT license](https://github.com/HyuchiaDiego/AegisTemplate/blob/master/LICENSE).

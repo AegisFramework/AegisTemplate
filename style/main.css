@@ -1,90 +1,56 @@
-/**
- * ==============================
- * Aegis Framework | MIT License
- * http://www.aegisframework.com/
- * ==============================
- */
-
-/**
- * Space for all imported Fonts
- */
+/** Space for all imported Fonts **/
 
 
 
+/** Main Style goes here**/
 
-/**
- * Main Style goes here
- */
-html {
-	width: auto;
-	overflow-x: hidden;
+
+/** Place here all Media Queries and it's styles.**/
+
+/** Default Style. Don't change. (320px) **/
+@media screen and  (max-width: 20em) {}
+
+/** Extra Small Devices, Phones (480px) **/
+@media screen and (min-width : 30em) {
+
 }
 
-body {
-	height: 100%;
-	width: 100%;
-  	overflow-x: hidden;
-  	font-size: 100%;
-  	margin: 0;
-  	padding: 0;
+/** Small Screens, Tablets (720px) **/
+@media screen and (min-width: 45em) {
+
 }
 
-li {
-	list-style-type: none;
-	display: inline-block;
+/** Medium Devices, Desktops (992px)**/
+@media screen and (min-width: 62em) {
+
 }
 
-a {
-	text-decoration: none;
-	color: inherit;
+/** HD Screen, Large Devices, Wide Screens (1200px) **/
+@media screen and (min-width: 75em) {
+
 }
 
-.wait, .wait * {
-	cursor: wait;
-}
-/**
- * Some CSS Fixes
- */
+/** Full HD Screen, Large Devices, Wide Screens (1920px) **/
+@media screen and (min-width: 120em) {
 
-*, *:before, *:after {
-	-moz-box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
 }
 
-.container {
-	margin: 0 auto;
-	max-width: 60rem; /*48rem*/
-	width: 95%;
+/** Retina Screen , Large Devices, Wide Screens(2560px) **/
+@media screen and (min-width: 160em) {
+
 }
 
-.clearfix:before,
-.clearfix:after {
-	content: " ";
-	display: table;
+/** 4k Screens, Large Devices, Wide Screens (3840px) **/
+@media screen and (min-width: 240em) {
+
 }
 
-.clearfix:after {
-	clear: both;
+/** 5k Screens, Large Devices, Wide Screens (5120px) **/
+@media screen and (min-width: 320em) {
+
 }
 
-.clearfix {
-	*zoom: 1;
-}
-
-
-/**
- * Place here all Media Queries and it's styles.
- */
-
-/* 400px (Most Smartphones, and minimun width of browser in a computer) */
-@media (max-width: 25rem){
-	body{
-
-	}
-}
-
-/* CSS for Printing */
-@media print{
+/** CSS for Printing **/
+@media print {
 
 }
