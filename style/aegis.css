@@ -6,7 +6,6 @@
  */
 
 html {
-	width: auto;
 	overflow-x: hidden;
 	height: 100%;
 	width: 100%;
@@ -21,7 +20,7 @@ body {
 	padding: 0;
 }
 
-h1, h2, h3, h4, h5, h6{
+h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
 
@@ -41,8 +40,71 @@ a {
 	cursor:pointer;
 }
 
+select, button {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	border: none;
+	outline: none;
+}
+
+img {
+	-webkit-user-drag: none;
+	user-drag: none;
+	-webkit-touch-callout: none;
+}
+
 .wait, .wait * {
 	cursor: wait;
+}
+
+.unselectable, img {
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.middle {
+	top: 50%;
+	left: 50%;
+	-webkit-transform: translate(-50%,-50%);
+	-moz-transform: translate(-50%,-50%);
+	-o-transform: translate(-50%,-50%);
+	-ms-transform: translate(-50%,-50%);
+	position: absolute;
+}
+
+.vertical * {
+	display: block;
+}
+
+.horizontal * {
+	display: inline-block;
+}
+
+.align-center {
+	text-align: center;
+}
+
+.align-left {
+	text-align: left;
+}
+
+.align-right {
+	text-align: right;
+}
+
+.vertical.align-center * {
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.vertical.align-left * {
+	margin-right: auto;
+}
+
+.vertical.align-right * {
+	margin-left: auto;
 }
 
 /**
