@@ -1,3 +1,6 @@
+
+
+
 $(document).ready(function(){
 	$('a.mailto').mailto();
     $(".lazy").lazyload();
@@ -7,6 +10,18 @@ $(document).ready(function(){
 	    e.initMouseEvent('mousedown');
 		console.log($(this).attr("for"));
 	    $("#"+$(this).attr("for"))[0].dispatchEvent(e);
+	});
+
+	$(".nav .menu-icon").click(function(){
+		$(this).parent().find("ul").toggleClass("active");
+		$(this).toggleClass('fa-bars fa-times');
+	});
+
+	$(".nav li").click(function(){
+	    if($(".menu-icon").is(":visible")){
+	      $(".menu-icon").toggleClass('fa-bars fa-times');
+	      $(this).parent().parent().find("ul").toggleClass("active");
+	    }
 	});
 
     if(navigator.userAgent.toLowerCase().indexOf('chrome') > -1 && navigator.userAgent.toLowerCase().indexOf('linux') > -1){

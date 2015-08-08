@@ -4,7 +4,9 @@
 
 /** Main Style goes here**/
 
-
+.hero {
+    background-image: url("http://i.ytimg.com/vi/i79M4nKW1Ms/maxresdefault.jpg");
+}
 /** Place here all Media Queries and it's styles.**/
 
 /** Default Style. Don't change. (320px) **/
