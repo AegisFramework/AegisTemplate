@@ -26,13 +26,6 @@ h1, h2, h3, h4, h5, h6 {
 	margin: 0;
 }
 
-
-a {
-	text-decoration: none;
-	color: inherit;
-	cursor: pointer;
-}
-
 textarea {
 	resize: none;
 }
@@ -890,6 +883,36 @@ img {
 
 /**
 * ==============================
+* Paddings
+* ==============================
+*/
+
+.padded-0 {
+	padding: 0;
+}
+
+.padded-1 {
+	padding: 1em;
+}
+
+.padded-2 {
+	padding: 2em;
+}
+
+.padded-3 {
+	padding: 3em;
+}
+
+.padded-4 {
+	padding: 4em;
+}
+
+.padded-5 {
+	padding: 5em;
+}
+
+/**
+* ==============================
 * Navigation
 * ==============================
 */
@@ -905,6 +928,12 @@ img {
 	z-index: 999;
 	background-color: #fff;
 	min-height: 3em;
+}
+
+.nav a {
+	text-decoration: none;
+	color: inherit;
+	cursor: pointer;
 }
 
 .nav .logo {
@@ -979,8 +1008,10 @@ img {
 		max-height: 100%;
 	}
 
-	.nav.top-m {
-		max-height: 3em;
+	.nav.top-m > ul.full {
+		width: 100%;
+		max-width: 100%;
+		text-align: center;
 	}
 
 	.nav.top-m > ul > li {
@@ -1033,8 +1064,10 @@ img {
 		max-height: 100%;
 	}
 
-	.nav.top-l {
-		max-height: 3em;
+	.nav.top-l > ul.full {
+		width: 100%;
+		max-width: 100%;
+		text-align: center;
 	}
 
 	.nav.top-l > ul > li {
@@ -1087,8 +1120,10 @@ img {
 		max-height: 100%;
 	}
 
-	.nav.top-xl {
-		max-height: 3em;
+	.nav.top-xl > ul.full {
+		width: 100%;
+		max-width: 100%;
+		text-align: center;
 	}
 
 	.nav.top-xl > ul > li {
@@ -1152,6 +1187,58 @@ img {
   padding-top: 50%;
   text-align: center;
   width: 100%;
+}
+
+/**
+* ==============================
+* Messages
+* ==============================
+*/
+
+.info, .success, .warning, .error, .quote {
+    margin: 0.5em 0;
+    padding: 1em;
+}
+
+.info {
+    color:#0288D1;
+    border-left: 0.5em solid #0277BD;
+    background-color: #B3E5FC;
+}
+
+.success {
+    color: #388E3C;
+    border-left: 0.5em solid #2E7D32;
+    background-color: #C8E6C9;
+}
+
+.warning {
+    color: #FF8F00;
+    border-left: 0.5em solid #F9A825;
+    background-color: #FFF59D;
+}
+
+.error {
+    color: #D32F2F;
+    border-left: 0.5em solid #C62828;
+    background-color: #FFCDD2;
+}
+
+.quote {
+  background: #F5F5F5;
+  border-left: 0.5em solid #616161;
+  color:#616161;
+}
+
+/**
+* ==============================
+* Code
+* ==============================
+*/
+
+pre {
+	background: #f5f5f5;
+	padding: 1em;
 }
 
 /**
