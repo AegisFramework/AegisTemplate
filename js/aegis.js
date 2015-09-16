@@ -21,9 +21,4 @@ $(document).ready(function(){
 	    }
 	});
 
-    if(navigator.userAgent.toLowerCase().indexOf('chrome') > -1 && navigator.userAgent.toLowerCase().indexOf('linux') > -1){
-        $("body *").each(function(){
-            $(this).addClass("no-scrollbar");
-        });
-    }
 });
