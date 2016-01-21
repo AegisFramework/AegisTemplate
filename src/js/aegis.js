@@ -106,10 +106,10 @@ class Text {
 
 class View {
 
-    constructor(view, data = null){
+    constructor(view, data){
         this.view =  document.querySelector(view);
         this.viewContent = this.view.innerHTML;
-        this.data = data;
+	    this.data = typeof data == 'undefined' ? null : data;
     }
 
     getView(){

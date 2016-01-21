@@ -23,9 +23,5 @@ For more information read the [documentation](http://www.aegisframework.com/docu
 
 [Animate CSS](http://daneden.github.io/animate.css/) by Daniel Eden
 
-[Lazy Loading](http://www.appelsiini.net/projects/lazyload) by Mika Tuupola
-
-[Fit Vids]( http://fitvidsjs.com/) by  Chris Coyier and Paravel
-
 ## License
 Aegis is an Open Source project released under the [MIT license](https://github.com/HyuchiaDiego/AegisTemplate/blob/master/LICENSE).
