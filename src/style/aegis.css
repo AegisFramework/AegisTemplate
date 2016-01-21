@@ -1,9 +1,9 @@
 /**
-* ==============================
-* Aegis Framework | MIT License
-* http://www.aegisframework.com/
-* ==============================
-*/
+ * ==============================
+ * Aegis CSS 0.1.0 | MIT License
+ * http://aegisframework.com/
+ * ==============================
+ */
 
 html {
 	overflow-x: hidden;
@@ -31,6 +31,7 @@ h4,
 h5,
 h6 {
 	margin: 0;
+	padding: 0;
 }
 
 article,
@@ -47,6 +48,12 @@ nav,
 section,
 summary {
   display: block;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+	cursor: pointer;
 }
 
 audio,
@@ -223,6 +230,7 @@ img {
 	user-drag: none;
 	-webkit-touch-callout: none;
 	border: 0;
+	max-width: 100%;
 }
 
 .wait, .wait * {
@@ -235,7 +243,6 @@ img {
 	-ms-user-select: none;
 	user-select: none;
 }
-
 /**
 * ==============================
 * Grid System
@@ -955,7 +962,6 @@ img {
   }
 
 }
-
 /**
 * ==============================
 * Start of Custom built Elements
@@ -965,17 +971,20 @@ img {
 
 /**
 * ==============================
-* Hero Banners
+* Element Scroll Styles
 * ==============================
 */
 
+.scroll-x {
+	overflow-x: scroll;
+}
 /**
 * ==============================
 * Hero Banners
 * ==============================
 */
 
-.full-hero, .hero {
+.full-hero, .hero, .hero-transparent {
 	height: 100%;
 	color: #fff;
 	background-repeat: no-repeat;
@@ -1003,10 +1012,9 @@ img {
     background: rgba(255, 255, 255, 0.5);
 }
 
-.hero {
+.hero, .hero-transparent {
 	height: 50%;
 }
-
 /**
 * ==============================
 * Alignment and Distribution
@@ -1062,7 +1070,6 @@ img {
 .align-right {
 	text-align: right;
 }
-
 /**
 * ==============================
 * Paddings
@@ -1092,7 +1099,6 @@ img {
 .padded-5 {
 	padding: 5em;
 }
-
 /**
 * ==============================
 * Navigation
@@ -1112,20 +1118,15 @@ img {
 	min-height: 3em;
 }
 
-.nav a {
-	text-decoration: none;
-	color: inherit;
-	cursor: pointer;
-}
-
 .nav .logo {
 	float: left;
 	display: inline-block;
-	padding: 1em;
+	padding: 1rem;
 	max-width: 50%;
 	vertical-align: middle;
 	max-height: 3em;
 	overflow: hidden;
+	font-size: inherit;
 }
 
 .nav img.logo {
@@ -1147,7 +1148,6 @@ img {
 	margin: 0;
 	padding: 0;
 	display: none;
-	overflow: auto;
 	width: 100%;
 }
 
@@ -1158,13 +1158,17 @@ img {
 .nav ul > li {
 	display: block;
 	width: 100%;
-	padding: 1em;
 	list-style: none;
 	cursor: pointer;
 	text-align: center;
 }
 
-.nav li:hover {
+.nav ul > li > a {
+	padding: 1em;
+	display: block;
+}
+
+.nav li a:hover {
 	background-color: rgba(0, 0, 0, 0.1);
 }
 
@@ -1177,6 +1181,11 @@ img {
 	vertical-align: middle;
 }
 
+.wrapper.offset-sn-m,
+.wrapper.offset-sn-l {
+	margin-top: 2em;
+}
+
 @media (min-width: 601px) {
 
 	.nav.top-m > .logo {
@@ -1186,7 +1195,6 @@ img {
 	.nav.top-m > ul {
 		display: inline-block;
 		max-width: 70%;
-		overflow: hidden;
 		max-height: 100%;
 	}
 
@@ -1231,6 +1239,7 @@ img {
 	.wrapper.offset-sn-m {
 		width: 70%;
 		float: right;
+		margin-top: 0;
 	}
 }
 
@@ -1242,7 +1251,6 @@ img {
 	.nav.top-l > ul {
 		display: inline-block;
 		max-width: 80%;
-		overflow: hidden;
 		max-height: 100%;
 	}
 
@@ -1287,6 +1295,7 @@ img {
 	.wrapper.offset-sn-l {
 		width: 80%;
 		float: right;
+		margin-top: 0;
 	}
 }
 
@@ -1298,7 +1307,6 @@ img {
 	.nav.top-xl > ul {
 		display: inline-block;
 		max-width: 80%;
-		overflow: hidden;
 		max-height: 100%;
 	}
 
@@ -1345,8 +1353,6 @@ img {
 		float: right;
 	}
 }
-
-
 /**
 * ==============================
 * Circles
@@ -1370,7 +1376,6 @@ img {
   text-align: center;
   width: 100%;
 }
-
 /**
 * ==============================
 * Messages
@@ -1415,7 +1420,6 @@ img {
   border-left: 0.5em solid #616161;
   color:#616161;
 }
-
 /**
 * ==============================
 * Code
@@ -1435,7 +1439,6 @@ samp {
   font-family: monospace, monospace;
   font-size: 1em;
 }
-
 /**
 * ==============================
 * Material Design
@@ -1472,7 +1475,6 @@ samp {
 	border: 1px solid #ddd;
 	border-bottom: 0;
 }
-
 /**
  * ==============================
  * CSS Fixes
