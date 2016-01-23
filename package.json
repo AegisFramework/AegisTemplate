@@ -26,6 +26,7 @@
     "gulp": "^3.9.0",
     "gulp-cssnano": "^2.1.0",
     "gulp-download-stream": "0.0.13",
+    "gulp-html-replace": "^1.5.5",
     "gulp-rename": "^1.2.2",
     "gulp-zip": "^3.1.0"
   }

@@ -7,13 +7,26 @@ var zip = require('gulp-zip');
 var cssnano = require('gulp-cssnano');
 var closureCompiler = require('google-closure-compiler').gulp();
 var rename = require('gulp-rename');
+var htmlreplace = require('gulp-html-replace');
 
 var name = 'AegisTemplate-v' + pkg.version + '.zip';
 var minName = 'AegisTemplate-v' + pkg.version + '.min.zip';
 
 gulp.task('build-development', () => {
 
-	return gulp.src(['src/**', '!src/js/*.min.js', '!src/style/!(font-awesome).min.css', '!**/.DS_Store'], {dot: true})
+	gulp.src('src/index.html')
+    .pipe(htmlreplace({
+		scripts: {
+			src: ['js/aegis.js', 'js/main.js'],
+			tpl: '<script src="%s"></script>'
+		},
+		stylesheets: {
+			src: ['style/animate.css', 'style/font-awesome.min.css', 'style/aegis.css', 'style/main.css'],
+			tpl: '<link rel="stylesheet" href="%s">'
+		}
+	}))
+    .pipe(gulp.dest('build/'));
+	return gulp.src(['src/**', '!src/js/*.min.js', '!src/style/!(font-awesome).min.css', '!**/.DS_Store', '!**/.gitignore', 'build/**', '!src/index.html'], {dot: true})
 		.pipe(zip(name))
 		.pipe(gulp.dest('dist/'));
 });
@@ -24,7 +37,20 @@ gulp.task('build-production', () => {
     .pipe(cssnano())
     .pipe(gulp.dest("src/style/"));
 
-	return gulp.src(['src/**', '!src/js/!(*.min|main).js', '!src/style/!(*.min|main).css', '!**/.DS_Store'], {dot: true})
+	gulp.src('src/index.html')
+    .pipe(htmlreplace({
+		scripts: {
+			src: ['js/aegis.min.js', 'js/main.js'],
+			tpl: '<script src="%s"></script>'
+		},
+		stylesheets: {
+			src: ['style/animate.min.css', 'style/font-awesome.min.css', 'style/aegis.min.css', 'style/main.css'],
+			tpl: '<link rel="stylesheet" href="%s">'
+		}
+	}))
+    .pipe(gulp.dest('build/'));
+
+	return gulp.src(['src/**', '!src/js/!(*.min|main).js', '!src/style/!(*.min|main).css', '!**/.DS_Store', '!**/.gitignore', 'build/**', '!src/index.html'], {dot: true})
 		.pipe(zip(minName))
 		.pipe(gulp.dest('dist/'));
 });
