@@ -1070,6 +1070,10 @@ img {
 .align-right {
 	text-align: right;
 }
+
+.align-justify {
+	text-align: justify;
+}
 /**
 * ==============================
 * Paddings
@@ -1138,6 +1142,10 @@ img {
 	max-height: 3em;
 }
 
+.nav h1.logo {
+	margin-left: 0.1em;
+}
+
 .nav.fixed {
 	position: fixed;
 	overflow: auto;
@@ -1148,7 +1156,7 @@ img {
 	margin: 0;
 	padding: 0;
 	display: none;
-	width: 100%;
+	width: auto;
 }
 
 .nav > ul.active {
@@ -1168,6 +1176,10 @@ img {
 	display: block;
 }
 
+.nav ul > li:empty {
+	padding: 1em;
+}
+
 .nav li a:hover {
 	background-color: rgba(0, 0, 0, 0.1);
 }
@@ -1181,8 +1193,12 @@ img {
 	vertical-align: middle;
 }
 
-.wrapper.offset-sn-m,
-.wrapper.offset-sn-l {
+.offset-sn-m,
+.offset-sn-l {
+	margin-top: 2em;
+}
+
+.offset-tn {
 	margin-top: 2em;
 }
 

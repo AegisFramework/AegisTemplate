@@ -12,7 +12,6 @@ Visit the [WebPage](http://www.aegisframework.com/)
 3. Place your content on the index.html file and create as many files as you need.
 4. Place your custom style on the main.css file.
 5. Place your custom javascript on the main.js file.
-6. Images should be placed inside the img directory.
 
 For more information read the [documentation](http://www.aegisframework.com/documentation.html).
 

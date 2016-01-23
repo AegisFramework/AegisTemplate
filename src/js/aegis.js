@@ -6,189 +6,6 @@
  */
 
 "use strict";
-/**
-* ==============================
-* Text
-* ==============================
-*/
-
-class Text {
-
-    static capitalize(text){
-        return text.charAt(0).toUpperCase() + text.slice(1);
-    }
-
-    static getSuffix(text, key){
-        var suffix = "";
-        var position = text.indexOf(key);
-        if(position != -1){
-            position += key.length;
-            suffix = text.substr(position, text.length - position);
-        }
-        return suffix;
-    }
-
-    static getPrefix(text, key){
-        var prefix = "";
-        var position = text.indexOf(key);
-        if(position != -1){
-            prefix = text.substr(0, position);
-        }
-        return prefix;
-    }
-
-    static toBinary(text){
-        text = text.trim();
-        if(!isNaN(text)){
-            text = parseInt(text);
-            var binary = bin.toString(2).replace(/(.{4})/g, "$1 ");
-            return binary;
-        }else{
-            var PADDING = "00000000";
-            var resultArray = [];
-            for (var i = 0; i < bin.length; i++) {
-              var compact = bin.charCodeAt(i).toString(2);
-              var padded  = compact.substring(0, PADDING.length - compact.length) + compact;
-              resultArray.push(padded);
-            }
-            return resultArray.join(" ");
-        }
-    }
-
-    static toHexadecimal(text){
-        text = text.trim();
-        if(!isNaN(text)){
-            text = parseInt(text);
-            return text.toString(16).toUpperCase().replace(/(.{4})/g,"$1 ");
-        }
-    }
-
-    static buildText(array, wrapper){
-        var result = "";
-        if(array[0]){
-            for(let i in array){
-                result += Text.buildText(array[i], wrapper);
-            }
-            return result;
-        }else{
-            var string = wrapper;
-            for(let i in array){
-                string = string.replace(new RegExp('@' + i, 'g'), array[i]);
-            }
-            return string;
-        }
-
-    }
-
-    static removeSpecialCharacters(text){
-        var special = Array("#", ":", "ñ", "í", "ó", "ú", "á", "é", "Í", "Ó", "Ú", "Á", "É", "\(", "\)", "¡", "¿", "\/");
-        var common   = Array("", "", "n", "i", "o", "u", "a", "e", "I", "O", "U", "A", "E", "", "", "", "", "");
-        for(let character in special){
-            text = text.replace(new RegExp(special[character], 'g'), common[character]);
-        }
-        return text;
-    }
-
-    static removePunctuation(text){
-        var special = new Array(";", "," ,".");
-        for(let character in special){
-            text = text.replace(new RegExp(special[character], 'g'), "");
-        }
-        return text;
-    }
-
-}
-/**
-* ==============================
-* View
-* ==============================
-*/
-
-class View {
-
-    constructor(view, data){
-        this.view =  document.querySelector(view);
-        this.viewContent = this.view.innerHTML;
-	    this.data = typeof data == 'undefined' ? null : data;
-    }
-
-    getView(){
-        return this.view;
-    }
-
-    isCompilable(){
-        return this.data != null;
-    }
-
-    compile(){
-        if(isCompilable){
-            var compiledView = this.viewContent;
-            for(let i in data){
-                compiledView = compiledView.replace(new RegExp('{{' + i + '}}', 'g'), data[i]);
-            }
-            this.view.innerHTML = compiledView;
-        }
-    }
-
-    show(){
-        document.querySelector(".active[data-view]").classList.remove("active");
-        this.view.classList.add("active");
-    }
-
-}
-
-/**
-* ==============================
-* Router
-* ==============================
-*/
-
-class Router {
-
-    constructor(){
-        this.domain = window.location.hostname;
-        this.routes =  new Object();
-    }
-
-    getRoute(){
-        return window.location.pathname.substring(0, window.location.pathname.length - 1);
-    }
-
-    getBaseUrl(){
-        return this.domain;
-    }
-
-    getFullUrl(){
-        return window.location.href.substring(0, window.location.href.length - 1);
-    }
-
-    registerRoute(route, view){
-        this.routes[route] = view;
-    }
-
-    getRoutes(){
-        return this.routes;
-    }
-
-    match(){
-        return typeof this.routes[this.getRoute()] != 'undefined' || typeof this.routes[this.getRoute()] + '/' != 'undefined';
-    }
-
-    getView(){
-        return this.routes[this.getRoute()];
-    }
-
-    getProtocol(){
-        return window.location.protocol;
-    }
-
-    listen(){
-        if(match()){
-            this.routes[this.getRoute()].show();
-        }
-    }
-
-}
 class Aegis {
 
 	constructor(selector){
@@ -343,4 +160,251 @@ function $_(selector){
 
 function $_ready(callback){
 	window.addEventListener("load", callback);
+}
+/**
+* ==============================
+* Router
+* ==============================
+*/
+
+class Router {
+
+    constructor(){
+        this.domain = window.location.hostname;
+        this.routes =  new Object();
+    }
+
+    getRoute(){
+        return window.location.pathname.substring(0, window.location.pathname.length - 1);
+    }
+
+    getBaseUrl(){
+        return this.domain;
+    }
+
+    getFullUrl(){
+        return window.location.href.substring(0, window.location.href.length - 1);
+    }
+
+    registerRoute(route, view){
+        this.routes[route] = view;
+    }
+
+    getRoutes(){
+        return this.routes;
+    }
+
+    match(){
+        return typeof this.routes[this.getRoute()] != 'undefined' || typeof this.routes[this.getRoute()] + '/' != 'undefined';
+    }
+
+    getView(){
+        return this.routes[this.getRoute()];
+    }
+
+    getProtocol(){
+        return window.location.protocol;
+    }
+
+    listen(){
+        if(this.match()){
+            this.routes[this.getRoute()].show();
+        }
+    }
+
+}
+/**
+* ==============================
+* Screen
+* ==============================
+*/
+
+class Screen {
+
+	static isRetina(){
+		return window.devicePixelRatio >= 2;
+	}
+
+	static isPortrait(){
+		return window.innerHeight > window.innerWidth;
+	}
+
+	static isLandscape(){
+		return (window.orientation === 90 || window.orientation === -90);
+	}
+
+	static getOrientation(){
+		return this.isPortrait ? "Portrait" : "Landscape";
+	}
+
+	static getMaximumWidth(){
+		return window.screen.availWidth;
+	}
+
+	static getMaxiumHeight(){
+		return window.screen.availHeight;
+	}
+}
+
+/**
+* ==============================
+* Storage
+* ==============================
+*/
+
+class Storage {
+
+	static get(key){
+		if(window.localStorage){
+			return localStorage.getItem(key);
+		}else{
+			console.warn("Your browser does not support Local Storage");
+		}
+	}
+
+	static set(key, value){
+		if(window.localStorage){
+			localStorage.setItem(key, value);
+		}else{
+			console.warn("Your browser does not support Local Storage");
+		}
+	}
+
+	static clear(){
+		if(window.localStorage){
+			ocalStorage.clear();
+		}else{
+			console.warn("Your browser does not support Local Storage");
+		}
+	}
+}
+/**
+* ==============================
+* Text
+* ==============================
+*/
+
+class Text {
+
+    static capitalize(text){
+        return text.charAt(0).toUpperCase() + text.slice(1);
+    }
+
+    static getSuffix(text, key){
+        var suffix = "";
+        var position = text.indexOf(key);
+        if(position != -1){
+            position += key.length;
+            suffix = text.substr(position, text.length - position);
+        }
+        return suffix;
+    }
+
+    static getPrefix(text, key){
+        var prefix = "";
+        var position = text.indexOf(key);
+        if(position != -1){
+            prefix = text.substr(0, position);
+        }
+        return prefix;
+    }
+
+    static toBinary(text){
+        text = text.trim();
+        if(!isNaN(text)){
+            text = parseInt(text);
+            var binary = bin.toString(2).replace(/(.{4})/g, "$1 ");
+            return binary;
+        }else{
+            var PADDING = "00000000";
+            var resultArray = [];
+            for (var i = 0; i < bin.length; i++) {
+              var compact = bin.charCodeAt(i).toString(2);
+              var padded  = compact.substring(0, PADDING.length - compact.length) + compact;
+              resultArray.push(padded);
+            }
+            return resultArray.join(" ");
+        }
+    }
+
+    static toHexadecimal(text){
+        text = text.trim();
+        if(!isNaN(text)){
+            text = parseInt(text);
+            return text.toString(16).toUpperCase().replace(/(.{4})/g,"$1 ");
+        }
+    }
+
+    static buildText(array, wrapper){
+        var result = "";
+        if(array[0]){
+            for(let i in array){
+                result += Text.buildText(array[i], wrapper);
+            }
+            return result;
+        }else{
+            var string = wrapper;
+            for(let i in array){
+                string = string.replace(new RegExp('@' + i, 'g'), array[i]);
+            }
+            return string;
+        }
+
+    }
+
+    static removeSpecialCharacters(text){
+        var special = Array("#", ":", "ñ", "í", "ó", "ú", "á", "é", "Í", "Ó", "Ú", "Á", "É", "\(", "\)", "¡", "¿", "\/");
+        var common   = Array("", "", "n", "i", "o", "u", "a", "e", "I", "O", "U", "A", "E", "", "", "", "", "");
+        for(let character in special){
+            text = text.replace(new RegExp(special[character], 'g'), common[character]);
+        }
+        return text;
+    }
+
+    static removePunctuation(text){
+        var special = new Array(";", "," ,".");
+        for(let character in special){
+            text = text.replace(new RegExp(special[character], 'g'), "");
+        }
+        return text;
+    }
+
+}
+/**
+* ==============================
+* View
+* ==============================
+*/
+
+class View {
+
+    constructor(view, data){
+        this.view =  document.querySelector(view);
+        this.viewContent = this.view.innerHTML;
+	    this.data = typeof data == 'undefined' ? null : data;
+    }
+
+    getView(){
+        return this.view;
+    }
+
+    isCompilable(){
+        return this.data != null;
+    }
+
+    compile(){
+        if(isCompilable){
+            var compiledView = this.viewContent;
+            for(let i in data){
+                compiledView = compiledView.replace(new RegExp('{{' + i + '}}', 'g'), data[i]);
+            }
+            this.view.innerHTML = compiledView;
+        }
+    }
+
+    show(){
+        document.querySelector("[data-view].active").classList.remove("active");
+        this.view.classList.add("active");
+    }
+
 }
