@@ -142,9 +142,9 @@ class Aegis {
 
 	attribute(attribute, value){
 		if (typeof value === 'undefined'){
-			return this.collection[0].setAttribute(attribute, value);
-		}else{
 			this.collection[0].getAttribute(attribute);
+		}else{
+			return this.collection[0].setAttribute(attribute, value);
 		}
 	}
 }
