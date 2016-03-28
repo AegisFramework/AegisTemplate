@@ -18,6 +18,8 @@ class Aegis {
 				this.collection = [selector];
 			}
 
+		}else{
+			return null;
 		}
 	}
 
@@ -138,6 +140,17 @@ class Aegis {
 
 	find(selector){
 		return new Aegis(this.collection[0].querySelectorAll(selector));
+	}
+
+	closest(searchSelector){
+		var element = this.find(searchSelector);
+		while (element) {
+			if(element.get(0) != null){
+				return element;
+			}
+			element = this.parent().find(searchSelector);
+		}
+		return null;
 	}
 
 	attribute(attribute, value){
@@ -367,6 +380,42 @@ class Text {
             text = text.replace(new RegExp(special[character], 'g'), "");
         }
         return text;
+    }
+
+    static toFriendlyUrl(text){
+		var expressions = {
+			'[áàâãªä]'   :   'a',
+	        '[ÁÀÂÃÄ]'    :   'A',
+	        '[ÍÌÎÏ]'     :   'I',
+	        '[íìîï]'     :   'i',
+	        '[éèêë]'     :   'e',
+	        '[ÉÈÊË]'     :   'E',
+	        '[óòôõºö]'   :   'o',
+	        '[ÓÒÔÕÖ]'    :   'O',
+	        '[úùûü]'     :   'u',
+	        '[ÚÙÛÜ]'     :   'U',
+	        'ç'          :   'c',
+	        'Ç'          :   'C',
+	        'ñ'          :   'n',
+	        'Ñ'          :   'N',
+	        '_'          :   '-',
+	        '[’‘‹›<>\']' :   '',
+	        '[“”«»„\"]'  :   '',
+	        '[\(\)\{\}\[\]]' : '',
+	        '[?¿!¡#$%&^*´`~\/°\|]' : '',
+	        '[,.:;]'     : '',
+	        '\s'         :   '-'
+	    };
+
+	    for(let regex in expressions){
+		   text = text.replace(new RegExp(regex, 'g'), expressions[regex]);
+	    }
+
+		return text;
+    }
+
+    static toUrl(text){
+	    return encodeURI(text);
     }
 
 }
