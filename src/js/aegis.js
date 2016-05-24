@@ -11,13 +11,14 @@ class Aegis {
 	constructor(selector){
 		if(typeof selector == "string"){
 			this.collection = document.querySelectorAll(selector);
+			this.length = this.collection.length;
 		}else if(typeof selector == "object"){
 			if(selector.length >= 1){
 				this.collection = selector;
 			}else{
 				this.collection = [selector];
 			}
-
+			this.length = this.collection.length;
 		}else{
 			return null;
 		}
@@ -73,6 +74,12 @@ class Aegis {
 	submit(callback){
 		for(let i = 0; i < this.collection.length; i++){
 			this.collection[i].addEventListener("submit", callback, false);
+		}
+	}
+
+	change(callback){
+		for(let i = 0; i < this.collection.length; i++){
+			this.collection[i].addEventListener("change", myScript, false);
 		}
 	}
 
@@ -142,6 +149,15 @@ class Aegis {
 		return new Aegis(this.collection[0].querySelectorAll(selector));
 	}
 
+	offset(){
+		var rect = this.collection[0].getBoundingClientRect();
+		var offset = {
+			top: rect.top + document.body.scrollTop,
+			left: rect.left + document.body.scrollLeft
+		};
+		return offset;
+	}
+
 	closest(searchSelector){
 		var element = this.find(searchSelector);
 		while (element) {
@@ -160,6 +176,65 @@ class Aegis {
 			return this.collection[0].setAttribute(attribute, value);
 		}
 	}
+
+	after(content){
+		for(let i = 0; i < this.collection.length; i++){
+			this.collection[i].insertAdjacentHTML('afterend', content);
+		}
+	}
+
+	before(content){
+		for(let i = 0; i < this.collection.length; i++){
+			this.collection[i].insertAdjacentHTML('beforebegin', content);
+		}
+	}
+
+	style(properties){
+		for(let i = 0; i < this.collection.length; i++){
+			for(var property in properties){
+				this.collection[i].style[property] = properties[property];
+			}
+		}
+	}
+
+	animate(style, time){
+		for(let i = 0; i < this.collection.length; i++){
+			for(var property in style){
+
+				var start = new Date().getTime();
+				var collection = this.collection;
+
+				if(typeof this.collection[i].style[property] !== "undefined"){
+					var initialValue = this.collection[i].style[property];
+
+					var timer = setInterval(function() {
+						var step = Math.min(1, (new Date().getTime() - start) / time);
+
+						collection[i].style[property] = (initialValue + step * (style[property] - initialValue));
+
+						if(step == 1){
+							clearInterval(timer);
+						}
+					}, 25);
+					this.collection[i].style[property] = initialValue;
+
+				}else if(typeof (this.collection[i])[property] !== "undefined"){
+					var initialValue = (this.collection[i])[property];
+
+					var timer = setInterval(function() {
+						var step = Math.min(1, (new Date().getTime() - start) / time);
+
+						(collection[i])[property] = (initialValue + step * (style[property] - initialValue));
+
+						if(step == 1){
+							clearInterval(timer);
+						}
+					}, 25);
+					(this.collection[i])[property] = initialValue;
+				}
+			}
+		}
+	}
 }
 
 function $_(selector){
@@ -173,6 +248,76 @@ function $_(selector){
 
 function $_ready(callback){
 	window.addEventListener("load", callback);
+}
+/**
+* ==============================
+* Request
+* ==============================
+*/
+
+class Request {
+
+	static get(url, data, events, responseType = ""){
+		var request = new XMLHttpRequest();
+		request.open('GET', url, true);
+		request.responseType = responseType;
+
+		if(typeof events.onload === "function"){
+			request.onload = function(){
+				events.onload(request);
+			}
+		}
+
+		if(typeof events.error === "function"){
+			request.error = function(){
+				events.error(request);
+			}
+		}
+
+		request.send(data);
+	}
+
+	static post(url, data, events, responseType = "", contentType = 'application/x-www-form-urlencoded'){
+		var request = new XMLHttpRequest();
+		request.open('POST', url, true);
+		request.responseType = responseType;
+		if(typeof events.onload === "function"){
+			request.onload = function(){
+				events.onload(request);
+			}
+		}
+
+		if(typeof events.error === "function"){
+			request.error = function(){
+				events.error(request);
+			}
+		}
+
+		request.setRequestHeader('Content-Type', `${contentType}; charset=UTF-8`);
+		request.send(data);
+	}
+
+	static json(url, events){
+		var request = new XMLHttpRequest();
+
+		request.responseType = "json";
+
+		if(typeof events.onload === "function"){
+			request.onload = function(){
+				events.onload(request);
+			}
+		}
+
+		if(typeof events.error === "function"){
+			request.error = function(){
+				events.error(request);
+			}
+		}
+
+		request.open('GET', url, true);
+		request.send();
+	}
+
 }
 /**
 * ==============================
@@ -258,7 +403,6 @@ class Screen {
 		return window.screen.availHeight;
 	}
 }
-
 /**
 * ==============================
 * Storage
@@ -404,7 +548,7 @@ class Text {
 	        '[\(\)\{\}\[\]]' : '',
 	        '[?¿!¡#$%&^*´`~\/°\|]' : '',
 	        '[,.:;]'     : '',
-	        '\s'         :   '-'
+	        ' '         :   '-'
 	    };
 
 	    for(let regex in expressions){
