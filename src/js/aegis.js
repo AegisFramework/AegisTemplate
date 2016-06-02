@@ -1,6 +1,6 @@
 /**
  * ==============================
- * Aegis JS 0.1.0 | MIT License
+ * Aegis JS 0.2.0 | MIT License
  * http://aegisframework.com/
  * ==============================
  */
@@ -321,58 +321,6 @@ class Request {
 }
 /**
 * ==============================
-* Router
-* ==============================
-*/
-
-class Router {
-
-    constructor(){
-        this.domain = window.location.hostname;
-        this.routes =  new Object();
-    }
-
-    getRoute(){
-        return window.location.pathname.substring(0, window.location.pathname.length - 1);
-    }
-
-    getBaseUrl(){
-        return this.domain;
-    }
-
-    getFullUrl(){
-        return window.location.href.substring(0, window.location.href.length - 1);
-    }
-
-    registerRoute(route, view){
-        this.routes[route] = view;
-    }
-
-    getRoutes(){
-        return this.routes;
-    }
-
-    match(){
-        return typeof this.routes[this.getRoute()] != 'undefined' || typeof this.routes[this.getRoute()] + '/' != 'undefined';
-    }
-
-    getView(){
-        return this.routes[this.getRoute()];
-    }
-
-    getProtocol(){
-        return window.location.protocol;
-    }
-
-    listen(){
-        if(this.match()){
-            this.routes[this.getRoute()].show();
-        }
-    }
-
-}
-/**
-* ==============================
 * Screen
 * ==============================
 */
@@ -399,7 +347,7 @@ class Screen {
 		return window.screen.availWidth;
 	}
 
-	static getMaxiumHeight(){
+	static getMaximumHeight(){
 		return window.screen.availHeight;
 	}
 }
@@ -466,30 +414,8 @@ class Text {
         return prefix;
     }
 
-    static toBinary(text){
-        text = text.trim();
-        if(!isNaN(text)){
-            text = parseInt(text);
-            var binary = bin.toString(2).replace(/(.{4})/g, "$1 ");
-            return binary;
-        }else{
-            var PADDING = "00000000";
-            var resultArray = [];
-            for (var i = 0; i < bin.length; i++) {
-              var compact = bin.charCodeAt(i).toString(2);
-              var padded  = compact.substring(0, PADDING.length - compact.length) + compact;
-              resultArray.push(padded);
-            }
-            return resultArray.join(" ");
-        }
-    }
-
-    static toHexadecimal(text){
-        text = text.trim();
-        if(!isNaN(text)){
-            text = parseInt(text);
-            return text.toString(16).toUpperCase().replace(/(.{4})/g,"$1 ");
-        }
+    static getSelection(){
+	    return window.getSelection().toString();
     }
 
     static buildText(array, wrapper){
@@ -519,7 +445,7 @@ class Text {
     }
 
     static removePunctuation(text){
-        var special = new Array(";", "," ,".");
+        var special = new Array(";", "," ,".", ":");
         for(let character in special){
             text = text.replace(new RegExp(special[character], 'g'), "");
         }
@@ -560,44 +486,6 @@ class Text {
 
     static toUrl(text){
 	    return encodeURI(text);
-    }
-
-}
-/**
-* ==============================
-* View
-* ==============================
-*/
-
-class View {
-
-    constructor(view, data){
-        this.view =  document.querySelector(view);
-        this.viewContent = this.view.innerHTML;
-	    this.data = typeof data == 'undefined' ? null : data;
-    }
-
-    getView(){
-        return this.view;
-    }
-
-    isCompilable(){
-        return this.data != null;
-    }
-
-    compile(){
-        if(isCompilable){
-            var compiledView = this.viewContent;
-            for(let i in data){
-                compiledView = compiledView.replace(new RegExp('{{' + i + '}}', 'g'), data[i]);
-            }
-            this.view.innerHTML = compiledView;
-        }
-    }
-
-    show(){
-        document.querySelector("[data-view].active").classList.remove("active");
-        this.view.classList.add("active");
     }
 
 }
