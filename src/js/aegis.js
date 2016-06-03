@@ -26,13 +26,13 @@ class Aegis {
 
 	hide(){
 		for(let i = 0; i < this.collection.length; i++){
-			this.collection[i].display = "none";
+			this.collection[i].style.display = "none";
 		}
 	}
 
 	show(){
 		for(let i = 0; i < this.collection.length; i++){
-			this.collection[i].display = "block";
+			this.collection[i].style.display = "block";
 		}
 	}
 
@@ -57,6 +57,17 @@ class Aegis {
 		}
 	}
 
+	hasClass(classToCheck){
+		if(this.collection[0]){
+			for(let j = 0; j < this.collection[0].classList.length; j++){
+				if(this.collection[0].classList[j] == classToCheck){
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 	value(value){
 		if (typeof value === 'undefined'){
 			return this.collection[0].value;
@@ -71,6 +82,18 @@ class Aegis {
 		}
 	}
 
+	keyup(callback){
+		for(let i = 0; i < this.collection.length; i++){
+			this.collection[i].addEventListener("keyup", callback, false);
+		}
+	}
+
+	keydown(callback){
+		for(let i = 0; i < this.collection.length; i++){
+			this.collection[i].addEventListener("keydown", callback, false);
+		}
+	}
+
 	submit(callback){
 		for(let i = 0; i < this.collection.length; i++){
 			this.collection[i].addEventListener("submit", callback, false);
@@ -79,7 +102,7 @@ class Aegis {
 
 	change(callback){
 		for(let i = 0; i < this.collection.length; i++){
-			this.collection[i].addEventListener("change", myScript, false);
+			this.collection[i].addEventListener("change", callback, false);
 		}
 	}
 
@@ -89,9 +112,22 @@ class Aegis {
 		}
 	}
 
-	on(event, callback){
+	on(event, callback, target){
+		event = event.split(" ");
 		for(let i = 0; i < this.collection.length; i++){
-			this.collection[i].addEventListener(event, callback, false);
+			for(let j = 0; j < event.length; j++){
+				if(typeof callback === "string" && typeof target !== "undefined"){
+
+					this.collection[i].addEventListener(event[j], function(e){
+						if(e.target && $_(e.target).matches(callback)) {
+							target.call(e.target, e);
+						}
+					}, false);
+
+				}else{
+					this.collection[i].addEventListener(event[j], callback, false);
+				}
+			}
 		}
 	}
 
@@ -124,7 +160,11 @@ class Aegis {
 	}
 
 	append(data){
-		this.collection[0].innerHTML += data;
+		if(this.collection[0]){
+			var div = document.createElement('div');
+			div.innerHTML = data;
+			this.collection[0].appendChild(div.firstChild);
+		}
 	}
 
 	each(callback){
@@ -138,42 +178,49 @@ class Aegis {
 	}
 
 	isVisible(){
-		return this.collection[0].display != "none" && this.collection[0].offsetWidth > 0 && this.collection[0].offsetHeight > 0;
+		if(this.collection[0]){
+			return this.collection[0].display != "none" && this.collection[0].offsetWidth > 0 && this.collection[0].offsetHeight > 0;
+		}
 	}
 
 	parent(){
-		return new Aegis(this.collection[0].parentElement);
+		if(this.collection[0]){
+			return new Aegis(this.collection[0].parentElement);
+		}
 	}
 
 	find(selector){
-		return new Aegis(this.collection[0].querySelectorAll(selector));
+		if(this.collection[0]){
+			return new Aegis(this.collection[0].querySelectorAll(selector));
+		}
 	}
 
 	offset(){
-		var rect = this.collection[0].getBoundingClientRect();
-		var offset = {
-			top: rect.top + document.body.scrollTop,
-			left: rect.left + document.body.scrollLeft
-		};
-		return offset;
+		if(this.collection[0]){
+			var rect = this.collection[0].getBoundingClientRect();
+			var offset = {
+				top: rect.top + document.body.scrollTop,
+				left: rect.left + document.body.scrollLeft
+			};
+			return offset;
+		}
 	}
 
 	closest(searchSelector){
 		var element = this.find(searchSelector);
-		while (element) {
-			if(element.get(0) != null){
-				return element;
-			}
+		while (element.get(0) == null && this.parent().get(0) != null) {
 			element = this.parent().find(searchSelector);
 		}
-		return null;
+		return element;
 	}
 
 	attribute(attribute, value){
-		if (typeof value === 'undefined'){
-			this.collection[0].getAttribute(attribute);
-		}else{
-			return this.collection[0].setAttribute(attribute, value);
+		if(this.collection[0]){
+			if (typeof value === 'undefined'){
+				this.collection[0].getAttribute(attribute);
+			}else{
+				return this.collection[0].setAttribute(attribute, value);
+			}
 		}
 	}
 
@@ -189,10 +236,16 @@ class Aegis {
 		}
 	}
 
-	style(properties){
+	style(properties, value){
 		for(let i = 0; i < this.collection.length; i++){
-			for(var property in properties){
-				this.collection[i].style[property] = properties[property];
+			if(typeof properties === "string" && value !== "undefined"){
+				this.collection[i].style[properties] = value;
+			}else if(typeof properties === "string" && value === "undefined"){
+				return this.collection[i].style[properties];
+			}else if(typeof properties === "object"){
+				for(var property in properties){
+					this.collection[i].style[property] = properties[property];
+				}
 			}
 		}
 	}
@@ -235,6 +288,75 @@ class Aegis {
 			}
 		}
 	}
+
+	fadeIn(time = 400, callback){
+		if(this.collection[0]){
+			var element = this.collection[0];
+			element.style.opacity = 0;
+
+			var last = +new Date();
+
+			var tick = function(){
+				element.style.opacity = +element.style.opacity + (new Date() - last) / time;
+				last = +new Date();
+
+				if (+element.style.opacity < 1) {
+					(window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
+				}else{
+					if(typeof callback === "function"){
+						callback();
+					}
+				}
+			};
+
+			tick();
+		}
+	}
+
+	fadeOut(time = 400, callback){
+		if(this.collection[0]){
+			var last = +new Date();
+			var element = this.collection[0];
+			var tick = function(){
+				element.style.opacity = +element.style.opacity - (new Date() - last) / time;
+				last = +new Date();
+
+				if (+element.style.opacity > 0) {
+					(window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16);
+				}else{
+					if(typeof callback === "function"){
+						callback();
+					}
+				}
+			};
+
+			tick();
+		}
+	}
+
+	matches(selector){
+		var check = Element.prototype;
+		var polyfill = check.matches || check.webkitMatchesSelector || check.mozMatchesSelector || check.msMatchesSelector || function() {
+			return [].indexOf.call(document.querySelectorAll(selector), this) !== -1;
+		};
+		return polyfill.call(this.collection[0], selector);
+	}
+
+	remove(){
+		if(this.collection[0]){
+			this.collection[0].parentNode.removeChild(this.collection[0]);
+		}
+	}
+
+	property(property, value){
+		if(this.collection[0]){
+			if(typeof value !== "undefined"){
+				this.collection[0][property] = value;
+			}else{
+				return this.collection[0][property];
+			}
+		}
+	}
 }
 
 function $_(selector){
@@ -249,6 +371,7 @@ function $_(selector){
 function $_ready(callback){
 	window.addEventListener("load", callback);
 }
+
 /**
 * ==============================
 * Request
