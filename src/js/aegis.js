@@ -178,9 +178,12 @@ class Aegis {
 	}
 
 	isVisible(){
-		if(this.collection[0]){
-			return this.collection[0].display != "none" && this.collection[0].offsetWidth > 0 && this.collection[0].offsetHeight > 0;
+		for(let i = 0; i < this.collection.length; i++){
+			if (this.collection[i].display != "none" && this.collection[i].offsetWidth > 0 && this.collection[i].offsetHeight > 0){
+				return true;
+			}
 		}
+		return false;
 	}
 
 	parent(){
@@ -343,8 +346,8 @@ class Aegis {
 	}
 
 	remove(){
-		if(this.collection[0]){
-			this.collection[0].parentNode.removeChild(this.collection[0]);
+		for(let i = 0; i < this.collection.length; i++){
+			this.collection[i].parentNode.removeChild(this.collection[i]);
 		}
 	}
 
