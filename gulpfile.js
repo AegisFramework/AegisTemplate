@@ -17,7 +17,7 @@ gulp.task('build-development', () => {
 	gulp.src('src/index.html')
     .pipe(htmlreplace({
 		scripts: {
-			src: ['js/aegis.js', 'js/main.js'],
+			src: ['js/artemis.js', 'js/main.js'],
 			tpl: '<script src="%s"></script>'
 		},
 		stylesheets: {
@@ -40,7 +40,7 @@ gulp.task('build-production', () => {
 	gulp.src('src/index.html')
     .pipe(htmlreplace({
 		scripts: {
-			src: ['js/aegis.min.js', 'js/main.js'],
+			src: ['js/artemis.min.js', 'js/main.js'],
 			tpl: '<script src="%s"></script>'
 		},
 		stylesheets: {
@@ -57,10 +57,10 @@ gulp.task('build-production', () => {
 
 gulp.task('download', () => {
 
-    download("https://raw.githubusercontent.com/HyuchiaDiego/AegisJS/master/dist/aegis.js").pipe(gulp.dest("src/js/"));
+    download("https://raw.githubusercontent.com/AegisFramework/Artemis/master/dist/artemis.js").pipe(gulp.dest("src/js/"));
     download("https://raw.githubusercontent.com/HyuchiaDiego/AegisCSS/master/dist/aegis.css").pipe(gulp.dest("src/style/"));
 
-    download("https://raw.githubusercontent.com/HyuchiaDiego/AegisJS/master/dist/aegis.min.js").pipe(gulp.dest("src/js/"));
+    download("https://raw.githubusercontent.com/AegisFramework/Artemis/master/dist/artemis.min.js").pipe(gulp.dest("src/js/"));
     download("https://raw.githubusercontent.com/HyuchiaDiego/AegisCSS/master/dist/aegis.min.css").pipe(gulp.dest("src/style/"));
 
 	download("https://raw.githubusercontent.com/daneden/animate.css/master/animate.css").pipe(gulp.dest("src/style/"));

@@ -1,12 +1,12 @@
 /**
  * ==============================
- * Aegis JS 0.2.0 | MIT License
+ * Artemis 0.1.0 | MIT License
  * http://aegisframework.com/
  * ==============================
  */
 
 "use strict";
-class Aegis {
+class Artemis {
 
 	constructor(selector){
 		if(typeof selector == "string"){
@@ -132,7 +132,7 @@ class Aegis {
 	}
 
 	filter(element){
-		return new Aegis(this.collection[0].querySelector(element));
+		return new Artemis(this.collection[0].querySelector(element));
 	}
 
 	data(name, value){
@@ -188,13 +188,13 @@ class Aegis {
 
 	parent(){
 		if(this.collection[0]){
-			return new Aegis(this.collection[0].parentElement);
+			return new Artemis(this.collection[0].parentElement);
 		}
 	}
 
 	find(selector){
 		if(this.collection[0]){
-			return new Aegis(this.collection[0].querySelectorAll(selector));
+			return new Artemis(this.collection[0].querySelectorAll(selector));
 		}
 	}
 
@@ -364,9 +364,9 @@ class Aegis {
 
 function $_(selector){
 	if(typeof selector != "undefined"){
-		return new Aegis(selector);
+		return new Artemis(selector);
 	}else{
-		return Aegis;
+		return Artemis;
 	}
 
 }
