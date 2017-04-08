@@ -12,7 +12,7 @@ var htmlreplace = require('gulp-html-replace');
 var name = 'AegisTemplate-v' + pkg.version + '.zip';
 var minName = 'AegisTemplate-v' + pkg.version + '.min.zip';
 
-gulp.task('build-development', () => {
+gulp.task('prepare-dev', () => {
 
 	gulp.src('src/index.html')
     .pipe(htmlreplace({
@@ -26,12 +26,9 @@ gulp.task('build-development', () => {
 		}
 	}))
     .pipe(gulp.dest('build/'));
-	return gulp.src(['src/**', '!src/js/*.min.js', '!src/style/!(font-awesome).min.css', '!**/.DS_Store', '!**/.gitignore', 'build/**', '!src/index.html'], {dot: true})
-		.pipe(zip(name))
-		.pipe(gulp.dest('dist/'));
 });
 
-gulp.task('build-production', () => {
+gulp.task('prepare-prod', () => {
 
     gulp.src('src/style/animate.min.css')
     .pipe(cssnano())
@@ -49,8 +46,18 @@ gulp.task('build-production', () => {
 		}
 	}))
     .pipe(gulp.dest('build/'));
+});
 
-	return gulp.src(['src/**', '!src/js/!(*.min|main).js', '!src/style/!(*.min|main).css', '!**/.DS_Store', '!**/.gitignore', 'build/**', '!src/index.html'], {dot: true})
+gulp.task('build-development', () => {
+
+	return gulp.src(['build/*','src/**', '!src/js/*.min.js', '!src/style/!(font-awesome).min.css', '!**/.DS_Store', '!**/.gitignore', 'build/**', '!src/index.html'], {dot: true})
+		.pipe(zip(name))
+		.pipe(gulp.dest('dist/'));
+});
+
+gulp.task('build-production', () => {
+
+	return gulp.src(['build/*','src/**', '!src/js/!(*.min|main).js', '!src/style/!(*.min|main).css', '!**/.DS_Store', '!**/.gitignore', 'build/**', '!src/index.html'], {dot: true})
 		.pipe(zip(minName))
 		.pipe(gulp.dest('dist/'));
 });
