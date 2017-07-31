@@ -1,9 +1,17 @@
 /** Space for all imported Fonts **/
 
 
-
 /** Main Style goes here**/
 
+h1 {
+	font-weight: lighter;
+	font-family: 'Open Sans', sans-serif;
+}
+
+small {
+	display: block;
+	font-size: 0.8rem;
+}
 
 /** Place here all Media Queries and it's styles.**/
 

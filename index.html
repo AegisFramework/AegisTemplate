@@ -13,88 +13,80 @@
 		<meta name="description" content=""><!--Page description. No longer than 155 characters.-->
 		<meta name="keywords" content="">
 		<meta name="author" content=""><!--Name of the author.-->
+		<meta name="theme-color" content=""><!--Theme color for browsers in hexadecimal format.-->
 
 		<!--Facebook Meta Tags-->
-		<meta property="og:image" content="http://"/> <!--URL of Image to show-->
+		<meta property="og:image" content=""/> <!--URL of Image to show-->
 		<meta property="og:description" content=""/> <!--Page Description-->
 		<meta property="og:site_name" content=""/> <!--The Name Here-->
-		<meta property="og:url" content="http://"/> <!--The Web main URL-->
+		<meta property="og:url" content=""/> <!--The Web main URL-->
 		<meta property="og:title" content=""/><!--The Title Here-->
 
 		<!--Google Meta Tags-->
 		<meta itemprop="name" content=""><!--The Name or Title Here-->
 		<meta itemprop="description" content=""><!--Page Description-->
-		<meta itemprop="image" content="http://"><!--URL of Image to show-->
+		<meta itemprop="image" content=""><!--URL of Image to show-->
 
 		<!--Twitter Meta Tags - You'll have to validate your website here: https://dev.twitter.com/docs/cards/validation/validator-->
 		<meta name="twitter:card" content="summary_large_image"> <!--Content type:summary, summary_large_image, photo, gallery, product, app, player-->
-        <meta name="twitter:domain" content=""> <!--Your web's domain-->
+		<meta name="twitter:domain" content=""> <!--Your web's domain-->
 		<meta name="twitter:site" content="@"> <!--@publisher-->
 		<meta name="twitter:title" content=""> <!--Page Title-->
 		<meta name="twitter:description" content=""> <!--Page description less than 200 characters-->
 		<meta name="twitter:creator" content="@"> <!--@author-->
-		<meta name="twitter:image:src" content="http://"><!--URL of Image to show-->
+		<meta name="twitter:image:src" content=""><!--URL of Image to show-->
 
 		<!--START of Web Apps Tags (Delete if not necessary)-->
 
 			<!--Android Meta Tags-->
 			<meta name="mobile-web-app-capable" content="yes">
+			<link rel="icon" sizes="192x192" href="img/icons/icon_192x192.png"> <!--192 x 192 Icon-->
+			<link rel="icon" sizes="128x128" href="img/icons/icon_128x128.png"> <!--128 x 128 Icon-->
 
 			<!--Apple Meta Tags-->
-			<meta name="apple-mobile-web-app-capable" content="yes">
 			<meta name="apple-mobile-web-app-title" content=""> <!--App Title or Name-->
+			<meta name="apple-mobile-web-app-capable" content="yes">
+			<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"> <!--Styling for the iOS Status Bar-->
+			<link rel="apple-touch-icon" href="img/icons/icon_60x60.png"> <!--60 x 60 Icon-->
+			<link rel="apple-touch-icon" sizes="76x76" href="img/icons/icon_76x76.png"> <!--76 x 76 Icon-->
+			<link rel="apple-touch-icon" sizes="120x120" href="img/icons/icon_120x120.png"> <!--120 x 120 Icon-->
+			<link rel="apple-touch-icon" sizes="152x152" href="img/icons/icon_152x152.png"> <!--152 x 152 Icon-->
+			<link rel="apple-touch-icon" sizes="152x152" href="img/icons/icon_167x167.png"> <!--167 x 167 Icon-->
+			<link rel="apple-touch-icon" sizes="152x152" href="img/icons/icon_180x180.png"> <!--180 x 180 Icon-->
 
 			<!--Microsoft Tags-->
 			<meta name="msapplication-TileColor" content=""><!--Color of the tile on Windows. In hexadecimal format-->
 			<meta name="application-name" content=""/> <!-- App Title -->
 			<meta name="msapplication-tooltip" content=""/> <!--Small text on hover-->
 			<meta name="msapplication-starturl" content="http://"/> <!-- URL to start in -->
-			<meta name="msapplication-square70x70logo" content="img/msapplication-square70x70logo.png" /><!--Image for Tile 70x70-->
-			<meta name="msapplication-square150x150logo" content="img/msapplication-square150x150logo.png" /><!--Image for Tile 150x150-->
-			<meta name="msapplication-wide310x150logo" content="img/msapplication-wide310x150logo.png" /><!--Image for Tile 310x150-->
-			<meta name="msapplication-square310x310logo" content="img/msapplication-square310x310logo.png" /><!--Image for Tile 310x310-->
+			<meta name="msapplication-square70x70logo" content="img/icon-70x70.png" /><!--Image for Tile 70x70-->
+			<meta name="msapplication-square150x150logo" content="img/icon-150x150.png" /><!--Image for Tile 150x150-->
+			<meta name="msapplication-square310x310logo" content="img/icon-310x310.png" /><!--Image for Tile 310x310-->
 
 		<!--END of Web Apps Tags-->
 
-		<link rel="publisher" href=""><!--Publisher's Google+ URL-->
+		<link rel="publisher" href="https://plus.google.com/"><!--Publisher's Google+ URL-->
 
-		<!-- Android Mobile Icons-->
-		<link rel="icon" sizes="192x192" href="img/icon_192x192.png">
-		<link rel="icon" sizes="128x128" href="img/icon_128x128.png">
-
-		<!--Apple mobile icons-->
-		<link rel="apple-touch-icon" href="img/touch-icon-iphone.png"><!--60 x 60-->
-		<link rel="apple-touch-icon" sizes="76x76" href="img/touch-icon-ipad.png"><!--76 x 76-->
-		<link rel="apple-touch-icon" sizes="120x120" href="img/touch-icon-iphone-retina.png"><!--120 x 120-->
-		<link rel="apple-touch-icon" sizes="152x152" href="img/touch-icon-ipad-retina.png"><!--152 x 152-->
-
-		<link rel="shortcut icon" href="img/favicon.ico"/><!--Favicon. Good tool for creating one: http://xiconeditor.com/ Create all sizes.-->
 		<link rel="canonical" href=""><!--Canonical URL of your webpage-->
+		<link rel="manifest" href="manifest.json">
+		<link rel="shortcut icon" href="img/favicon.ico"/><!--Favicon. Good tool for creating one: http://xiconeditor.com/ Create all sizes.-->
 
-		<!-- build:stylesheets -->
+		<link rel="stylesheet" href="style/font-awesome.css">
+		<link rel="stylesheet" href="style/kayros.css">
+		<link rel="stylesheet" href="style/main.css">
 
-		<!-- endbuild -->
-
-		<!-- build:scripts -->
-
-		<!-- endbuild -->
+		<script src="js/artemis.js"></script>
+		<script src="js/animatelo.min.js"></script>
+		<script src="js/main.js"></script>
 
 	</head>
 	<!--Feel free to change element's place according to your design.-->
 	<body>
 
-    	<header>
-    		<!--Page Title-->
-    		<h1></h1>
-
-    	</header>
-    	<!--Content Goes here-->
-
-    	<footer>
-
-		</footer>
-    	<script>
-                // Place here your Google Analytics Code.
-        </script>
+		<div class="middle align-center">
+			<h1>Aegis Framework
+				<small class="align-right">OREGANO</small>
+			</h1>
+		</div>
 	</body>
 </html>
