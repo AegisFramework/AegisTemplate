@@ -9,7 +9,6 @@ var name = "";
 var version = "";
 
 var files = [
-	"/",
 	"index.html",
 
 	// Style Sheets

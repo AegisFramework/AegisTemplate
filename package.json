@@ -1,0 +1,23 @@
+{
+  "name": "Oregano",
+  "version": "0.3.2",
+  "main": "gulpfile.js",
+  "description": "Create your webpage quickly with this template, featuring the cutting edge technologies and features of HTML5, CSS3 and Javascript. Make it mobile and social friendly!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AegisFramework/Oregano.git"
+  },
+  "author": "Diego Islas Ocampo",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AegisFramework/Oregano/issues"
+  },
+  "homepage": "http://aegisframework.com",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-download-stream": "0.0.13",
+    "gulp-zip": "^3.2.0",
+    "run-sequence": "^1.2.2"
+  }
+}
