@@ -13,13 +13,13 @@ var files = [
 
 	// Style Sheets
 	"style/font-awesome.min.css",
+	"style/animate.min.css",
 	"style/kayros.css",
-	//"style/main.css",
+	"style/main.css",
 
 	// Scripts
-	"js/animatelo.min.js",
 	"js/artemis.js",
-	//"js/main.js",
+	"js/main.js",
 
 	// Fonts
 	"fonts/fontawesome-webfont.eot",

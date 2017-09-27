@@ -39,11 +39,11 @@ gulp.task("download-deps", () => {
 	// Artemis JS
 	download("https://raw.githubusercontent.com/AegisFramework/Artemis/master/dist/artemis.js").pipe(gulp.dest("js/"));
 
-	// Animatelo
+	/// Animate CSS
 	download({
-		file: "animatelo.min.js",
-		url: "https://raw.githubusercontent.com/gibbok/animatelo/master/dist/animatelo.min.js"
-	}).pipe(gulp.dest("js/"));
+		file: "animate.min.css",
+		url: "https://raw.githubusercontent.com/daneden/animate.css/master/animate.min.css"
+	}).pipe(gulp.dest("style/"));
 
 	// Kayros
 	download({
